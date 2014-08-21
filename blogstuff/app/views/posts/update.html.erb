@@ -1,0 +1,9 @@
+  <form action="/update" method="post">
+    <input type="text" placeholder="Post Name" name="post[name]">
+    <input type="text" placeholder="Author" name="post[author]">
+    <textarea name="post[description]"></textarea>
+    <input type="hidden" name="ID" value="<%= @id %>">
+    <%= token_tag form_authenticity_token %>
+
+    <button> Update Post </button>
+  </form>

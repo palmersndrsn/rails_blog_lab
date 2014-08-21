@@ -3,3 +3,15 @@
 <h3><%= @post.tags.map(&:name) %></h3>
 <p><%= @post.description %></p>
 
+<form action="/remove/<%= @post.id %>" method="post">
+	<input type="submit" value="Remove this post">
+	    <%= token_tag form_authenticity_token %>
+</form>
+
+<form action="/update/<%= @post.id %>" method="get">
+	<input type="submit" value="Update this post">
+	    <%= token_tag form_authenticity_token %>
+</form>
+
+
+
