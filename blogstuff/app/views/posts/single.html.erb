@@ -1,6 +1,6 @@
 <h2><%= @post.name %></h2>
 <h3><%= @post.author %></h3>
-<h3><%= @post.tags.map(&:name) %></h3>
+<a href="/tags" name="tag" value="<%= @post.tags(&:id) %>"><%= @post.tags.map(&:name) %></a>
 <p><%= @post.description %></p>
 
 <form action="/remove/<%= @post.id %>" method="post">
@@ -12,6 +12,4 @@
 	<input type="submit" value="Update this post">
 	    <%= token_tag form_authenticity_token %>
 </form>
-
-
 
