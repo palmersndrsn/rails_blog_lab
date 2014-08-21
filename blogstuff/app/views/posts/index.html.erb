@@ -1,0 +1,11 @@
+<form action="/new" method="get">
+	<input type="submit" value="Add a New Post">
+</form>
+
+<% @posts.each do |post| %>
+	<div>
+		<h2><%= post.name %></h2>
+		<p> <%= post.author %> </p>
+		<a href="/post/<%= post.id %>">Read More</a>
+	</div>
+	<% end %>
