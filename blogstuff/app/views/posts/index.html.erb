@@ -1,11 +1,13 @@
-<form action="/new" method="get">
+<!-- <form action="/new" method="get">
 	<input type="submit" value="Add a New Post">
 </form>
+ -->
+<a href="<%= new_post_path %>" >New Post!?</a>
 
 <% @posts.each do |post| %>
 	<div>
 		<h2><%= post.name %></h2>
 		<p> <%= post.author %> </p>
-		<a href="/post/<%= post.id %>">Read More</a>
+		<a href="<%= post_path(post) %>">Read More</a>
 	</div>
 	<% end %>

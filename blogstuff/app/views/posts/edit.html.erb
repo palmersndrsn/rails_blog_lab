@@ -1,0 +1,8 @@
+<%= form_for @post do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :author %>
+  <%= f.text_area :description %>
+
+  <%= button_to "Update Your Post", post_path(@post), method: :patch %>
+
+<% end %>

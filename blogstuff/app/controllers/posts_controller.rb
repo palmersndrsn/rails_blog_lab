@@ -4,36 +4,38 @@ class PostsController < ApplicationController
 		@posts = Post.all
 	end
 
-	def new
+	def show
+		id = params[:id]
+		@post = Post.find(id)
 
+	end
+
+	def new
+		@post = Post.new
 	end
 
 	def create
 		new_post = params[:post].permit(:name, :author, :description)
-		new_tag = params[:tag].permit(:name)
+		new_tag = params[:tag]
 
 		my_post = Post.create(new_post)
-		my_tag = Tag.find_or_create_by(name: new_tag[:name])
+		my_tag = Tag.find_or_create_by(name: new_tag)
 
 		my_post.tags << my_tag
 
-		redirect_to "/index"
+		redirect_to "/"
 	end
 
-	def remove
-		id = params[:id]
-		Post.destroy(id)
+	def edit
+		post_id = params[:id]
+		@post = Post.find(post_id)
 
-		redirect_to "/index"
 	end
 
 	def update
-		@id = params[:id]
-
-	end
-
-	def update_done
-		u_id = params[:ID]
+		u_id = params[:id]
+		puts "THIS IS u_id"
+		puts u_id
 
 		new_data = params[:post].permit(:name, :author, :description)
 
@@ -46,12 +48,14 @@ class PostsController < ApplicationController
 
 
 
-		redirect_to "/index"
+		redirect_to "/"
 	end
 
-	def single
-		id = params[:id]
-		@post = Post.find(id)
 
+	def destroy
+		id = params[:id]
+		Post.destroy(id)
+
+		redirect_to "/"
 	end
 end

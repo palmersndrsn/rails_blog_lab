@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
 
-  root                to: 'posts#index'
 
-  get '/new',         to: 'posts#new'
+  root to: "posts#index"
+  resources :posts do
+    resources :tags
+   	resources :comments
+  end
+  # root                to: 'posts#index'
 
-  get '/tags',        to: 'tags#all'
+  # get '/new',         to: 'posts#new'
 
-  get '/index',       to: 'posts#index'
+  # get '/tags',        to: 'tags#all'
 
-  get '/post/:id',    to: 'posts#single'
+  # get '/index',       to: 'posts#index'
 
-  get '/update/:id',  to: 'posts#update'
+  # get '/post/:id',    to: 'posts#single'
 
-  post '/remove/:id', to: 'posts#remove'
+  # get '/update/:id',  to: 'posts#update'
 
-  post '/update',     to: 'posts#update_done'
+  # post '/remove/:id', to: 'posts#remove'
 
-  post '/create',     to: 'posts#create'
+  # post '/update',     to: 'posts#update_done'
+
+  # post '/create',     to: 'posts#create'
 
 end

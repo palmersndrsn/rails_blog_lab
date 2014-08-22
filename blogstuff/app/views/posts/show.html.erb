@@ -3,13 +3,15 @@
 <a href="/tags" name="tag" value="<%= @post.tags(&:id) %>"><%= @post.tags.map(&:name) %></a>
 <p><%= @post.description %></p>
 
-<form action="/remove/<%= @post.id %>" method="post">
+<!-- <form action="/posts/<%= @post.id %>" method="post">
 	<input type="submit" value="Remove this post">
 	    <%= token_tag form_authenticity_token %>
-</form>
+</form> -->
 
-<form action="/update/<%= @post.id %>" method="get">
-	<input type="submit" value="Update this post">
-	    <%= token_tag form_authenticity_token %>
-</form>
+<a href="<%= edit_post_path(@post) %>" >Edit Post</a>
+
+<%= form_for @post do |post| %>
+	<% button_to "Delete This Post", post_path(post), method: :delete %>
+<% end %>
+
 
